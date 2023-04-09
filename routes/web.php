@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodoListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [TodoListController::class, 'index']);
+
+Route::post('/saveItemRoute', [TodoListController::class, 'saveItem'])->name('saveItem'); // matc
+//hing with action
+Route::post('/markCompleteRoute/{id}', [TodoListController::class, 'markComplete'])->name('markComplete'); // matching with action
